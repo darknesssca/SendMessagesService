@@ -24,7 +24,7 @@ class SendMessageJob implements ShouldQueue
     {
         $response = Http::post('https://send.message/api/send', $params);
 
-        if ($response->status()) {
+        if ($response->status() == 500) {
             throw new \Exception('Не удалось отправить сообщение');
         }
     }
